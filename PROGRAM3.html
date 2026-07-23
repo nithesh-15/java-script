@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+</head>
+<body>
+    <h2>Mini Text Analyzer</h2>
+    <textarea id="paragraphInput"
+    placeholder="Enter a paragraph"
+    rows="6" cols="60"></textarea><br>
+    <button onclick="analyzeText()">Analyze</button>
+    <pre id ="output"></pre>
+    <script>
+        function analyzeText(){
+            let text=document.getElementById("paragraphInput").value;
+            let totalcharacter=text.length;
+            let words = text.match(/\b\w+\b/g) || [];
+            let totalwords = words.length;
+            let sentence = (text.match(/[.?!]/g) || []).length;
+            let unique = [...new Set(words.map((w)=>w.toLowerCase()))]
+            let output = `Total character:${totalcharacter} words:${totalwords} Total sentence:${sentence} uniq:${unique}`
+            document.getElementById("output").innerText=output;
+        }
+    </script>
+</body>
+</html>
